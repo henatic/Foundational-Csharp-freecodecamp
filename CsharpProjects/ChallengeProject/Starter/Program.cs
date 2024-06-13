@@ -33,7 +33,7 @@ string currentStudentLetterGrade = "";
 
 // display the header row for scores/grades
 Console.Clear();
-Console.WriteLine("Student\t\tGrade\tLetter Grade\n");
+Console.WriteLine("Student\t\tExam Score\tOverall\tGrade\tExtra Credit\n");
 
 /*
 The outer foreach loop is used to:
@@ -58,12 +58,15 @@ foreach (string name in studentNames)
 
     else if (currentStudent == "Logan")
         studentScores = loganScores;
-
-    int sumAssignmentScores = 0;
+        
 
     decimal currentStudentGrade = 0;
 
+    decimal currentStudentExtraCredit = 0;
+
     int gradedAssignments = 0;
+    int sumExamScore = 0;
+    int sumExtraCreditScore = 0;
 
     /* 
     the inner foreach loop sums assignment scores
@@ -74,13 +77,19 @@ foreach (string name in studentNames)
         gradedAssignments += 1;
 
         if (gradedAssignments <= examAssignments)
-            sumAssignmentScores += score;
+            sumExamScore += score;
 
         else
-            sumAssignmentScores += score / 10;
+            sumExtraCreditScore += score;
     }
 
-    currentStudentGrade = (decimal)(sumAssignmentScores) / examAssignments;
+    decimal currentExamGrade = (decimal)(sumExamScore) / examAssignments;
+
+    decimal currentStudentAverageExtraCreditScore = (decimal)(sumExtraCreditScore) / (studentScores.Length - examAssignments);
+
+    currentStudentExtraCredit = ((decimal)sumExtraCreditScore / 10) / examAssignments;
+
+    currentStudentGrade = currentExamGrade + currentStudentExtraCredit;
 
     if (currentStudentGrade >= 97)
         currentStudentLetterGrade = "A+";
@@ -124,7 +133,7 @@ foreach (string name in studentNames)
     // Student         Grade
     // Sophia:         92.2    A-
     
-    Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}");
+    Console.WriteLine($"{currentStudent}\t\t{currentExamGrade}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}\t{currentStudentAverageExtraCreditScore} ({currentStudentExtraCredit} pts)");
 }
 
 // required for running in VS Code (keeps the Output windows open to view results)
