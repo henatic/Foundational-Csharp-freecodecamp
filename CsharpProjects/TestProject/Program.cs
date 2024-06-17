@@ -307,7 +307,7 @@ Console.WriteLine($"Discount: {(saleAmount > 1000 ? 100 : 50)}");
 Random coin = new Random();
 int flip = coin.Next(0, 2); // 0 or 1.
 Console.WriteLine((flip == 0)? "heads": "tails");
-*/
+
 string permission = "Admin|Manager";
 int level = 55;
 
@@ -323,3 +323,47 @@ else
 {
     Console.WriteLine("You do not have sufficient privileges.");
 }
+*/
+
+// Control Variable Scope and Logic Using Code Blocks in C#
+
+/*
+bool flag = true;
+int value = 0;
+
+if (flag)
+{
+    Console.WriteLine($"Inside the code block: {value}");
+}
+
+value = 10;
+Console.WriteLine($"Outside the code block: {value}");
+
+if (flag)
+    Console.WriteLine(flag);
+
+if (flag) Console.WriteLine(flag);
+
+string name = "steve";
+if (name == "bob") Console.WriteLine("Found Bob");
+else if (name == "steve") Console.WriteLine("Found Steve");
+else Console.WriteLine("Found Chuck");
+*/
+
+int[] numbers = { 4, 8, 15, 16, 23, 42 };
+
+int total = 0;
+
+bool found = false;
+
+foreach (int number in numbers)
+{
+    total += number;
+
+    if (number == 42) found = true;
+
+}
+
+if (found) Console.WriteLine("Set contains 42");
+
+Console.WriteLine($"Total: {total}");
