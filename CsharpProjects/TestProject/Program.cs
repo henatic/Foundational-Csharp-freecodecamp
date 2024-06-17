@@ -303,7 +303,23 @@ int saleAmount = 1001;
 // int discount = saleAmount > 1000 ? 100 : 50;
 
 Console.WriteLine($"Discount: {(saleAmount > 1000 ? 100 : 50)}");
-*/
+
 Random coin = new Random();
 int flip = coin.Next(0, 2); // 0 or 1.
 Console.WriteLine((flip == 0)? "heads": "tails");
+*/
+string permission = "Admin|Manager";
+int level = 55;
+
+if(permission.Contains("Admin"))
+{
+    Console.WriteLine("Welcome," + (level > 55 ? " Super" : "") + " Admin user.");
+}
+else if (permission.Contains("Manager") && level >= 20)
+{
+    Console.WriteLine("Contact an Admin for access.");
+}
+else
+{
+    Console.WriteLine("You do not have sufficient privileges.");
+}
