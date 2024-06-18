@@ -506,3 +506,44 @@ for(int i = 1; i <= 100; i++) {
 
 // Add Looping Logic to Your Code Using the do-while and while Statements in C#
 
+Random random = new Random();/*
+int current = random.Next(1, 11);
+
+do
+{
+    current = random.Next(1, 11);
+
+    if (current >= 8) continue;
+
+    Console.WriteLine(current);
+} while (current != 7);
+
+
+while (current >= 3)
+{
+    Console.WriteLine(current);
+    current = random.Next(1, 11);
+}
+Console.WriteLine($"Last number: {current}");
+*/
+
+int heroHealth = 10;
+int monsterHealth = 10;
+int lostPoints = 0;
+do 
+{
+    // Hero Attacks First.
+    lostPoints = random.Next(1, 11);
+    monsterHealth -= lostPoints;
+    Console.WriteLine("Monster was damaged and lost " + lostPoints + " health and now has " + monsterHealth + " health.");
+
+    if(monsterHealth <= 0) continue;
+
+    // Monster's turn to attack.
+    lostPoints = random.Next(1, 11);
+    heroHealth -= lostPoints;
+    Console.WriteLine("Hero was damaged and lost " + lostPoints + " health and now has " + heroHealth + " health.");
+
+} while (heroHealth > 0 && monsterHealth > 0);
+
+Console.WriteLine((monsterHealth <= 0 ? "Hero" : "Monster") + " wins!");
