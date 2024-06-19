@@ -551,6 +551,7 @@ Console.WriteLine((monsterHealth <= 0 ? "Hero" : "Monster") + " wins!");
 
 // Code Project 1
 
+/*
 int numericValue = 0;
 bool validNumber  = false;
 string? readResult;
@@ -575,6 +576,30 @@ do
 } while (validNumber == false || numericValue < 5 || numericValue > 10);
 
 Console.WriteLine("Your input value ("+ numericValue +") has been accepted.");
+*/
 
 // Code Project 2
+
+string[] roleOptions = { "administrator", "manager", "user" };
+string? readResult;
+bool validResult = false;
+
+do
+{
+    Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
+    readResult = Console.ReadLine();
+    if (readResult != null)
+    {
+        readResult = readResult.Trim();
+        validResult = Array.Exists(roleOptions, element => element == readResult.ToLower());
+        if (!validResult)
+        {
+             Console.Write("The role name that you entered, \"" + readResult + "\" is not valid. ");
+        }
+    }
+} while (!validResult);
+
+Console.WriteLine("Your input value (" + readResult + ") has been accepted.");
+
+// Code Project 3
 
