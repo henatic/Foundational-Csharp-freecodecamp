@@ -525,7 +525,7 @@ while (current >= 3)
     current = random.Next(1, 11);
 }
 Console.WriteLine($"Last number: {current}");
-*/
+
 
 int heroHealth = 10;
 int monsterHealth = 10;
@@ -547,3 +547,34 @@ do
 } while (heroHealth > 0 && monsterHealth > 0);
 
 Console.WriteLine((monsterHealth <= 0 ? "Hero" : "Monster") + " wins!");
+*/
+
+// Code Project 1
+
+int numericValue = 0;
+bool validNumber  = false;
+string? readResult;
+
+Console.WriteLine("Enter an integer value between 5 and 10");
+do
+{
+    readResult = Console.ReadLine();
+    if (readResult != null && readResult.Length > 0)
+    {
+        validNumber = int.TryParse(readResult, out numericValue);
+        if (validNumber && (numericValue < 5 || numericValue > 10))
+        {
+            Console.WriteLine("You entered " + numericValue + ". Please enter a number between 5 and 10.");
+        }
+        else if (!validNumber)
+        {
+            Console.WriteLine("Sorry, you entered an invalid number, please try again");
+        }
+    }
+    else Console.WriteLine("You didn't enter anything. Please enter a number between 5 and 10.");
+} while (validNumber == false || numericValue < 5 || numericValue > 10);
+
+Console.WriteLine("Your input value ("+ numericValue +") has been accepted.");
+
+// Code Project 2
+
