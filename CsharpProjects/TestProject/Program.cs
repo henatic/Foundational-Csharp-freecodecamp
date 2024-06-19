@@ -580,6 +580,7 @@ Console.WriteLine("Your input value ("+ numericValue +") has been accepted.");
 
 // Code Project 2
 
+/*
 string[] roleOptions = { "administrator", "manager", "user" };
 string? readResult;
 bool validResult = false;
@@ -600,6 +601,24 @@ do
 } while (!validResult);
 
 Console.WriteLine("Your input value (" + readResult + ") has been accepted.");
+*/
 
 // Code Project 3
 
+string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices" };
+int index = 0;
+
+do
+{
+    string myString = myStrings[index];
+    while (myString.Contains('.'))
+    {
+        int periodLocation = myString.IndexOf('.');
+        Console.WriteLine(myString.Substring(0, periodLocation));
+        myString = myString.Remove(0, periodLocation + 1).TrimStart();
+    }
+
+    Console.WriteLine(myString);
+    index++;
+
+} while (index < myStrings.Length);
