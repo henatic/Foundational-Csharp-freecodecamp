@@ -287,16 +287,53 @@ do
 
         case "3":
             // Ensure animal ages and physical descriptions are complete
-            Console.WriteLine("Challenge Project - please check back soon to see progress.");
-            Console.WriteLine("Press the Enter key to continue.");
-            readResult = Console.ReadLine();
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 0] != "ID #: ")
+                {
+                    validEntry = false;
+                    string userEntry = "";
+                    int validNumber = 0;
+                    do
+                    {
+                        Console.WriteLine("Enter an age for " + ourAnimals[i, 0]);
+                        readResult = Console.ReadLine();
+                        if (readResult != null)
+                        {
+                            userEntry = readResult;
+                            validEntry = int.TryParse(userEntry, out validNumber);
+                        }
+
+                    } while (!validEntry);
+                    ourAnimals[i, 2] = "Age: " + validNumber;
+                    validEntry = false;
+
+                    do
+                    {
+                        Console.WriteLine("Enter a physical description for " + ourAnimals[i, 0] + " (size, color, gender, weight, housebroken)");
+                        readResult = Console.ReadLine();
+                        if (readResult != null)
+                        {
+                            userEntry = readResult;
+                            if (userEntry.Trim() != "") validEntry = true;
+                        }
+                    } while (!validEntry);
+                    ourAnimals[i, 4] = "Physical description: " + userEntry;
+                }
+            }
+
+            Console.WriteLine("Age and physical description fields are complete for all of our friends.");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
             break;
 
         case "4":
             // Ensure animal nicknames and personality descriptions are complete
-            Console.WriteLine("Challenge Project - please check back soon to see progress.");
-            Console.WriteLine("Press the Enter key to continue.");
-            readResult = Console.ReadLine();
+
+            
+            Console.WriteLine("Age and physical description fields are complete for all of our friends.");
+            Console.WriteLine("Press the Enter key to continue");
+            Console.ReadLine();
             break;
 
         case "5":
@@ -312,7 +349,7 @@ do
             Console.WriteLine("Press the Enter key to continue.");
             readResult = Console.ReadLine();
             break;
-        
+
         case "7":
             // Display all cats with a specified characteristic
             Console.WriteLine("UNDER CONSTRUCTION - please check back next month to see progress.");
