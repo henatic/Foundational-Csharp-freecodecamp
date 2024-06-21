@@ -506,7 +506,8 @@ for(int i = 1; i <= 100; i++) {
 
 // Add Looping Logic to Your Code Using the do-while and while Statements in C#
 
-Random random = new Random();/*
+/*
+Random random = new Random();
 int current = random.Next(1, 11);
 
 do
@@ -650,3 +651,171 @@ Console.WriteLine($"double : {double.MinValue} to {double.MaxValue} (with ~15-17
 Console.WriteLine($"decimal: {decimal.MinValue} to {decimal.MaxValue} (with 28-29 digits of precision)");
 */
 
+// Convert Data Types Using Casting and Conversion Techniques in C#
+
+/*
+int first = 2;
+string second = "4";
+string result = first + second;
+Console.WriteLine(result);
+
+int myInt = 3;
+Console.WriteLine($"int: {myInt}");
+
+decimal myDecimal = myInt;
+Console.WriteLine($"decimal: {myDecimal}");
+
+myDecimal = 3.14m;
+Console.WriteLine($"decimal: {myDecimal}");
+
+myInt = (int)myDecimal;
+Console.WriteLine($"int: {myInt}");
+
+myDecimal = 1.23456789m;
+float myFloat = (float)myDecimal;
+
+Console.WriteLine($"Decimal: {myDecimal}");
+Console.WriteLine($"Float  : {myFloat}");
+
+string value1 = "5";
+string value2 = "7";
+int result = Convert.ToInt32(value1) * Convert.ToInt32(value2);
+Console.WriteLine(result);
+
+int value = (int)1.5m; // casting truncates
+Console.WriteLine(value);
+
+int value2 = Convert.ToInt32(1.5m); // converting rounds up
+Console.WriteLine(value2);
+
+string value = "bad";
+int result = 0;
+if (int.TryParse(value, out result))
+{
+   Console.WriteLine($"Measurement: {result}");
+}
+else
+{
+   Console.WriteLine("Unable to report the measurement.");
+}
+
+if (result > 0)
+   Console.WriteLine($"Measurement (w/ offset): {50 + result}");
+
+string[] values = { "12.3", "45", "ABC", "11", "DEF" };
+
+string message = "";
+decimal total = 0m;
+foreach (string value in values)
+{
+    if (decimal.TryParse(value, out decimal currVal))
+    {
+        total += currVal;
+    }
+    else
+    {
+        message += value;
+    }
+}
+Console.WriteLine("Message: " + message);
+Console.WriteLine("Total: " + total);
+
+int value1 = 11;
+decimal value2 = 6.2m;
+float value3 = 4.3f;
+
+// Your code here to set result1
+// Hint: You need to round the result to nearest integer (don't just truncate)
+int result1 = Convert.ToInt32( value1 / value2 );
+
+Console.WriteLine($"Divide value1 by value2, display the result as an int: {result1}");
+
+// Your code here to set result2
+decimal result2 = value2 / Convert.ToDecimal(value3);
+Console.WriteLine($"Divide value2 by value3, display the result as a decimal: {result2}");
+
+// Your code here to set result3
+float result3 = value3 / value1;
+Console.WriteLine($"Divide value3 by value1, display the result as a float: {result3}");
+*/
+
+// Perform Operations on Arrays Using Helper Methods in C#
+
+/*
+string[] pallets = { "B14", "A11", "B12", "A13" };
+Console.WriteLine("Sorted...");
+Array.Sort(pallets);
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+
+Console.WriteLine("");
+Console.WriteLine("Reversed...");
+Array.Reverse(pallets);
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+
+Console.WriteLine("");
+
+Array.Clear(pallets, 0, 2);
+Console.WriteLine($"Clearing 2 ... count: {pallets.Length}");
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+
+Console.WriteLine("");
+Array.Resize(ref pallets, 6);
+Console.WriteLine($"Resizing 6 ... count: {pallets.Length}");
+
+pallets[4] = "C01";
+pallets[5] = "C02";
+
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+
+Console.WriteLine("");
+Array.Resize(ref pallets, 3);
+Console.WriteLine($"Resizing 3 ... count: {pallets.Length}");
+
+foreach (var pallet in pallets)
+{
+    Console.WriteLine($"-- {pallet}");
+}
+
+string value = "abc123";
+char[] valueArray = value.ToCharArray();
+Array.Reverse(valueArray);
+// string result = new string(valueArray);
+string result = String.Join(",", valueArray);
+Console.WriteLine(result);
+
+string[] items = result.Split(',');
+foreach (string item in items)
+{
+    Console.WriteLine(item);
+}
+
+string pangram = "The quick brown fox jumps over the lazy dog";
+string[] pangramArray = pangram.Split(" ");
+for (int item = 0; item < pangramArray.Length; item++)
+{
+    pangramArray[item] = String.Join("", pangramArray[item].ToCharArray().Reverse());
+
+}
+string newPangram = String.Join(" ", pangramArray);
+Console.WriteLine(newPangram);
+*/
+string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
+string[] orderArray = orderStream.Split(",");
+Array.Sort(orderArray);
+
+foreach (string order in orderArray)
+{
+    Console.WriteLine(order + (order.Length != 4 ? "\t - Error" : ""));
+}
