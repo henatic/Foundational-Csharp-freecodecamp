@@ -1052,6 +1052,7 @@ message = message.Replace("-", "");
 Console.WriteLine(message);
 */
 
+/*
 const string input = "<div><h2>Widgets &trade;</h2><span>5000</span></div>";
 
 string quantity = "";
@@ -1083,3 +1084,6 @@ output = output.Replace("trade", "reg");
 
 Console.WriteLine($"Quantity: {quantity}");
 Console.WriteLine(output);
+*/
+
+// Guided Project - Work with Variable Data in C#
