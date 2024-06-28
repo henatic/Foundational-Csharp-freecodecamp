@@ -21,19 +21,31 @@ string[] foods = {"@@@@@", "$$$$$", "#####"};
 // Current player string displayed in the Console
 string player = states[0];
 
+// If player can speed
+int speed = 1;
+
 // Index of the current food
 int food = 0;
 
 InitializeGame();
 while (!shouldExit) 
 {
-    Move();
+    Move(canSpeed: speed);
+    if(FoodConsumed())
+    {
+        ChangePlayer();
+        playerState();
+        ShowFood();
+    }
+    if(!shouldExit) shouldExit = TerminalResized();
 }
 
 // Returns true if the Terminal was resized 
 bool TerminalResized() 
 {
-    return height != Console.WindowHeight - 1 || width != Console.WindowWidth - 5;
+    bool isResized = (height != Console.WindowHeight - 1 || width != Console.WindowWidth - 5);
+    if(isResized) Console.WriteLine("Console was resized. Program exiting.");
+    return isResized;
 }
 
 // Displays random food at a random location
@@ -67,28 +79,31 @@ void FreezePlayer()
 }
 
 // Reads directional input from the Console and moves the player
-void Move() 
+void Move(bool CloseOnNondirection = false, int canSpeed = 1) 
 {
     int lastX = playerX;
     int lastY = playerY;
-    
+
     switch (Console.ReadKey(true).Key) 
     {
         case ConsoleKey.UpArrow:
-            playerY--; 
+            playerY -= canSpeed;
             break;
 		case ConsoleKey.DownArrow: 
-            playerY++; 
+            playerY += canSpeed;
             break;
 		case ConsoleKey.LeftArrow:  
-            playerX--; 
+            playerX -= canSpeed;
             break;
 		case ConsoleKey.RightArrow: 
-            playerX++; 
+            playerX += canSpeed; 
             break;
-		case ConsoleKey.Escape:     
-            shouldExit = true; 
+		case ConsoleKey.Escape:
+            shouldExit = true;
             break;
+        default:
+            shouldExit = CloseOnNondirection;
+            return;
     }
 
     // Clear the characters at the previous position
@@ -114,4 +129,29 @@ void InitializeGame()
     ShowFood();
     Console.SetCursorPosition(0, 0);
     Console.Write(player);
+}
+
+// Returns true if the food was consumed by the player
+bool FoodConsumed() {
+    return playerX == foodX && playerY == foodY;
+}
+
+void playerState()
+{
+    switch (player)
+    {
+        case states[0]: // Temporarily stop.
+            speed = 1;
+            break;
+        case states[1]:
+            speed = 3;
+            break;
+        case states[2]: // Temporarily stop.
+            FreezePlayer();
+            speed = 1;
+            break;
+        default:
+            speed = 1;
+            break;
+    }
 }
