@@ -140,13 +140,13 @@ void playerState()
 {
     switch (player)
     {
-        case states[0]: // Temporarily stop.
+        case "('-')": // Temporarily stop.
             speed = 1;
             break;
-        case states[1]:
+        case "(^-^)":
             speed = 3;
             break;
-        case states[2]: // Temporarily stop.
+        case "(X_X)": // Temporarily stop.
             FreezePlayer();
             speed = 1;
             break;
