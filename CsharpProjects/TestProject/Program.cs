@@ -1789,4 +1789,3 @@ void PrintGroup(string[,] group)
     - Code to terminate execution if an unsupported key is entered.
     - Code to terminate execution if the terminal was resized.
 */
-
