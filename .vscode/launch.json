@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/CsharpProjects/Exceptions101/bin/Debug/net8.0/Exceptions101.dll",
+            "program": "${workspaceFolder}/CsharpProjects/ThrowExceptions101/bin/Debug/net8.0/ThrowExceptions101.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/CsharpProjects/Exceptions101",
+            "cwd": "${workspaceFolder}/CsharpProjects/ThrowExceptions101",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "integratedTerminal",
             "stopAtEntry": false
