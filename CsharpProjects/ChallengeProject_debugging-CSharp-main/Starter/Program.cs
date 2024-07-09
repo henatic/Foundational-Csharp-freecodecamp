@@ -19,7 +19,7 @@ expected.
 
 
 string? readResult = null;
-bool useTestData = false;
+bool useTestData = true;
 
 Console.Clear();
 
@@ -115,16 +115,19 @@ static void LoadTillEachMorning(int[,] registerDailyStartingCash, int[] cashTill
 
 static void MakeChange(int cost, int[] cashTill, int twenties, int tens = 0, int fives = 0, int ones = 0)
 {
-    cashTill[3] += twenties;
-    cashTill[2] += tens;
-    cashTill[1] += fives;
-    cashTill[0] += ones;
-
     int amountPaid = twenties * 20 + tens * 10 + fives * 5 + ones;
     int changeNeeded = amountPaid - cost;
 
     if (changeNeeded < 0)
         throw new InvalidOperationException("InvalidOperationException: Not enough money provided to complete the transaction.");
+
+
+    int[] cashTillInitialState = new int[] {cashTill[0], cashTill[1], cashTill[2], cashTill[3]};
+
+    cashTill[3] += twenties;
+    cashTill[2] += tens;
+    cashTill[1] += fives;
+    cashTill[0] += ones;
 
     Console.WriteLine("Cashier prepares the following change:");
 
@@ -157,7 +160,14 @@ static void MakeChange(int cost, int[] cashTill, int twenties, int tens = 0, int
     }
 
     if (changeNeeded > 0)
+    {
+        cashTill[0] = cashTillInitialState[0];
+        cashTill[1] = cashTillInitialState[1];
+        cashTill[2] = cashTillInitialState[2];
+        cashTill[3] = cashTillInitialState[3];
         throw new InvalidOperationException("InvalidOperationException: The till is unable to make change for the cash provided.");
+    }  
+        
 
 }
 
